@@ -12,14 +12,18 @@ struct student {
   float gpa;
 };
 
+vector<student> students;
+
 void add_student(vector<student> &students, char first[80], char last[80], int id, float gpa);
 void remove_student(vector<student> &students, int id);
 void print_all(vector<student> &students);
 void initialize(vector<student> &students, char input[80]);
 
-int main() {
-  vector<student> students;
 
+int main() {
+  
+  // vector<student> students;
+  
   char input[80];
   cout << "Enter a command [ADD, PRINT, or DELETE]: ";
   cin >> input;
@@ -29,12 +33,13 @@ int main() {
 
 void initialize(vector<student> &students, char input[80]) {
 
-   char first[80];
-   char last[80];
-   int id;
-   float gpa;
-
    if(strcmp(input, "ADD") == 0) {
+     
+    char first[80];
+    char last[80];
+    int id;
+    float gpa;
+     
      cout << "First name: ";
      cin >> first;
 
@@ -48,13 +53,26 @@ void initialize(vector<student> &students, char input[80]) {
      cin >> gpa;
 
      add_student(students, first, last, id, gpa);
-     
      main();
-   } else if (strcmp(input, "PRINT") == 0) {
+     
+   } 
+   
+   if (strcmp(input, "PRINT") == 0) {
      print_all(students);
+     main();
    }
-
- }
+  
+  if (strcmp(input, "DELETE") == 0) {
+    
+    int id;
+     cout << "Enter ID of student you'd like to remove: ";
+     cin >> id;
+     
+    remove_student(students, id);
+    main();
+  }
+  
+}
 
 void add_student(vector<student> &students, char first[80], char last[80], int id, float gpa) {
   students.push_back(student());

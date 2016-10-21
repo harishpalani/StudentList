@@ -1,3 +1,16 @@
+/**
+ * Student List 
+ * 
+ * A vector-based database of students that keeps track of their first names, 
+ * last names, IDs, and GPAs.
+ * 
+ * e.g. [Harish] [Palani] [355131] [4.0] -> "Harish Palani, 355131, 4.0"
+ * 
+ * @author Harish Palani
+ * @version 1.0
+ */
+
+
 #include <iostream>
 #include <iomanip>
 #include <vector>
@@ -12,28 +25,18 @@ struct student {
   float gpa;
 };
 
-vector<student> students;
-
 void add_student(vector<student> &students, char first[80], char last[80], int id, float gpa);
 void remove_student(vector<student> &students, int id);
 void print_all(vector<student> &students);
-void initialize(vector<student> &students, char input[80]);
-
+vector<student> students;
 
 int main() {
-  
-  // vector<student> students;
   
   char input[80];
   cout << "Enter a command [ADD, PRINT, or DELETE]: ";
   cin >> input;
 
-  initialize(students, input);
-}
-
-void initialize(vector<student> &students, char input[80]) {
-
-   if(strcmp(input, "ADD") == 0) {
+  if(strcmp(input, "ADD") == 0) {
      
     char first[80];
     char last[80];
@@ -71,7 +74,6 @@ void initialize(vector<student> &students, char input[80]) {
     remove_student(students, id);
     main();
   }
-  
 }
 
 void add_student(vector<student> &students, char first[80], char last[80], int id, float gpa) {
